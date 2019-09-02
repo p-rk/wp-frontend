@@ -76,7 +76,9 @@ export default class OTPLogin extends Component {
             isOtpSent: true,
             apiResponse: post.data
           })
+          console.log(post)
         } catch(error) {
+          console.log(error)
           const { response: { data } } = error;
           this.setState({
             isError: true,
@@ -191,6 +193,11 @@ export default class OTPLogin extends Component {
                     <div className="field">
                       {apiResponse && isError && (
                         <p className="control help is-danger">{apiResponse.msg}</p>
+                      )}
+                    </div>
+                    <div className="field">
+                      {apiResponse && !isError && (
+                        <p className="control help is-success">{apiResponse.msg}</p>
                       )}
                     </div>
                     <div className="field">
