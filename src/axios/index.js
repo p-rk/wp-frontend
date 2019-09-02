@@ -4,7 +4,6 @@ const BASE_URL = process.env.NODE_ENV === 'production' ? 'https://whitepanda.cbo
 
 const instance = axios.create({
     baseURL: BASE_URL,
-    timeout: 1000,
   });
 
 export default instance
