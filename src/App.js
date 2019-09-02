@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from "react-router-dom";
+import Login from './components/Login';
+import Register from './components/Register';
+import OTPLogin from './components/Login/OTPLogin';
+import NotFound from './components/404'
+import 'bulma/css/bulma.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <Switch>
+        <Route path="/" exact render={props => <Register {...props} />} />
+        <Route path="/login" exact render={props => <Login {...props} />} />
+        <Route path="/otp/login" exact component={OTPLogin} />
+        <Route path='*' exact component={NotFound} />
+      </Switch>
+    </Router>
     </div>
   );
 }
